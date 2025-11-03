@@ -13,7 +13,11 @@ class TestHootel(object):
         options.add_experimental_option("detach", True)
         options.add_argument('--headless')
         self.browser = webdriver.Chrome(options=options)
+        self.browser.set_window_size(1920, 1080)
+        # self.browser.maximize_window()          # ez is kb. 800*600
+        # print(self.browser.get_window_size())   #800*600
         self.browser.get(URL)
+
 
     def teardown_method(self):
         self.browser.quit()
