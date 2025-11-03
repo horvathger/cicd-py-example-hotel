@@ -41,7 +41,7 @@ class TestHootel(object):
         time.sleep(1)
 
         logout_btn = self.browser.find_element(By.ID, 'logout-link')
-
+        # logout_btn = wself.browser.find_element(By.ID, 'logout-link')
         assert logout_btn.text == "Kilépés"
 
     def test_hotel_list(self):
