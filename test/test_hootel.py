@@ -4,7 +4,8 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 import allure
 import pytest
-
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 class TestHootel(object):
     def setup_method(self):
@@ -40,8 +41,8 @@ class TestHootel(object):
         submit_btn.click()
         time.sleep(1)
 
-        logout_btn = self.browser.find_element(By.ID, 'logout-link')
-        # logout_btn = wself.browser.find_element(By.ID, 'logout-link')
+        # logout_btn = self.browser.find_element(By.ID, 'logout-link')
+        logout_btn = WebDriverWait(self.browser, 5).until(EC.visibility_of_element_located((By.ID, 'logout-link')))
         assert logout_btn.text == "Kilépés"
 
     def test_hotel_list(self):
